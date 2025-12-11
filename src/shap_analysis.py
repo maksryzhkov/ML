@@ -65,7 +65,7 @@ def generate_shap_analysis(best_model_name, X_train, X_test, y_train_log, y_test
         explainer = shap.Explainer(model, X_train)
         shap_values = explainer(X_test)
 
-        # График №04 — общая важность признаков
+        # График №4 — общая важность признаков
         plt.figure(figsize=(12, 8))
         shap.summary_plot(shap_values, X_test, max_display=12, show=False)
         plt.title(f"SHAP-анализ: {best_model_name}", fontsize=14, pad=20)
@@ -74,7 +74,7 @@ def generate_shap_analysis(best_model_name, X_train, X_test, y_train_log, y_test
         plt.close()
         print("- 4_shap_summary.png сохранен")
 
-        # Графики №05 — почему модель ошиблась на конкретных компаниях
+        # Графики №5 — почему модель ошиблась на конкретных компаниях
         for i, pos in enumerate(top_pos, 1):
             name = names_test.iloc[pos]
             real = y_test_real.iloc[pos] / 1e9
